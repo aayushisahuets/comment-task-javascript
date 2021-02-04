@@ -1,0 +1,23 @@
+.input-list{
+    text-align: left;
+    border-color: black;
+    width: 612px;
+    height: 38px;
+    margin-left: 251px;
+    font-size: 15px;
+    font-family: Calibri !important;
+
+}
+.comment-input{
+    width: 519px;
+    margin-left: auto;
+    margin-right: auto; 
+    border-color: black;
+}
+.activePage {
+    background: cadetblue;
+    color: #fff;
+}
+.disabledBtn{
+    color: #ccc;
+}
