@@ -11,15 +11,19 @@
                 <ul class="list-group" id="list" onload="renderComments()"></ul>
                 <ul class="pagination justify-content-center" id="pagination"
                     onload="paginate()"></ul>
+                <!-- <button onclick="LocalsetItem()">Save-value</button>
+                <button onclick="LocalgetItem()">Display-value</button> -->
+                <p id="displayItem"></p>
+
             </div>  
             <form id="comment-form">
                 <div class="form-group comment-input">
-                    <textarea class="form-control" id="commentTxt" rows="5" placeholder="Enter Comment here..."></textarea>
-                    <button type="button" onclick="addComment()">Submit</button>
+                    <textarea class="form-control" id="commentTxt" rows="5" placeholder="Enter Comment here..."></textarea><br>
+                    <button type="button" class="bg-secondary" onclick="addComment()">Submit</button>
                 </div>
             </form>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script><!-- jquery cdn -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="js/index.js"></script>
     </body>
