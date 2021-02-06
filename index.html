@@ -5,15 +5,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/index.css">
     </head>
-    <body>
+    <body onload="renderComments()">
         <div class="container">
             <div class="mt-5">
                 <ul class="list-group" id="list" onload="renderComments()"></ul>
                 <ul class="pagination justify-content-center" id="pagination"
                     onload="paginate()"></ul>
-                <!-- <button onclick="LocalsetItem()">Save-value</button>
-                <button onclick="LocalgetItem()">Display-value</button> -->
-                <p id="displayItem"></p>
 
             </div>  
             <form id="comment-form">
