@@ -1,12 +1,19 @@
 .input-list{
     text-align: left;
     border-color: black;
+    background-color: #e2dfd9;
     width: 612px;
     height: 38px;
     margin-left: 251px;
     font-size: 15px;
+    word-spacing: 30px;
+   font-family: Calibri !important;
+}
+.text-list{
+    border-color: black;
+    background-color: #e2dfd9;
+    font-size: 15px;
     font-family: Calibri !important;
-
 }
 .comment-input{
     width: 519px;
@@ -15,10 +22,6 @@
     border-color: black;
 }
 .activePage {
-    background: cadetblue;
+    background: #a8bbbb;
     color: #fff;
 }
-/*.disabledBtn{
-    color: #ccc;
-}
-*/
