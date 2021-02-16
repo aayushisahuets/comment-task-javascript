@@ -2,7 +2,7 @@
   'use strict';
 
     let comments = [];
-    let CurrentPage = 1;
+    let currentPage = 1;
     let mod = 0;
 
         async function renderComments(){
@@ -11,7 +11,7 @@
            return;
            let html = document.getElementById("list");
             html.innerHTML = "";
-           let end = 5 * CurrentPage;
+           let end = 5 * currentPage;
            let start = end - 5;
            comments.map((obj, i) => {
             if(i>= start && i < end)
@@ -28,18 +28,20 @@
             if(event.keyCode === 13)
               if (!event.shiftKey) {
                 event.preventDefault();
-                let commentTxt = document.getElementById("commentTxt").value;
-                let comment = { 
-                              message: commentTxt, 
-                              datetime: new Date().toLocaleString()
-                              };
-                    if(!comments)
-                       comments = [];
-                comments.unshift(comment);//unshift() add items to the beginning of the  array.
-                paginate();
-                renderComments();
-                LocalsetItem();
-                location.reload();//reload the current document
+                let commentTxt = document.getElementById("commentTxt").trim().value;
+                // commentTxt.trim();
+                    if(commentTxt){
+                        let comment = { 
+                                      message: commentTxt, 
+                                      datetime: new Date().toLocaleString()
+                                      };
+                            if(!comments)
+                               comments = [];
+                        comments.unshift(comment);//unshift() add items to the beginning of the  array.
+                        LocalsetItem();
+                        renderComments();
+                        paginate();
+                    }
              }
            });
         });
@@ -53,25 +55,25 @@
               // debugger;
             switch(e.currentTarget.id){
                 case  "prevPage" :
-                  if(CurrentPage > 1)
-                  CurrentPage = CurrentPage-1;
+                  if(currentPage > 1)
+                  currentPage = currentPage-1;
                   break;
                 case "nextPage":
-                  if(CurrentPage <= mod-1)
-                  CurrentPage = CurrentPage+1;
+                  if(currentPage <= mod-1)
+                  currentPage = currentPage+1;
                   break;
                 default : 
-                  CurrentPage = parseInt(e.currentTarget.id);
+                  currentPage = parseInt(e.currentTarget.id);
                   break;
             }
-            paginate();
             renderComments();
+            paginate();
         });
 
         function paginate(){
             let count = comments.length;
             let paginator = document.getElementById('pagination');
-            paginator.innerHTML =""
+            paginator.innerHTML ="";
           jQuery('<li/>')
             .attr('class', 'page-item')
             .attr('id', 'prevPage').appendTo("#pagination");
@@ -97,7 +99,7 @@
                 .attr('id', `${i+1}`)
                 .appendTo("#pagination");
               jQuery("<a/>")
-                .attr("class", `page-link ${CurrentPage==i+1 ? "activePage" : ""}`)
+                .attr("class", `page-link ${currentPage==i+1 ? "activePage" : ""}`)
                 .attr("id", `page_${i}`)
                 .text(i+1) 
                 .appendTo(`#${i+1}`);

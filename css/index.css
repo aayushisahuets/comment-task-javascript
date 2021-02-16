@@ -2,12 +2,15 @@
     text-align: left;
     border-color: black;
     background-color: #e2dfd9;
-    width: 612px;
-    height: 38px;
-    margin-left: 251px;
+    width: 678px;
+    height: 75px;
+    margin-left: 230px;
     font-size: 15px;
-    word-spacing: 30px;
-   font-family: Calibri !important;
+    font-family: Calibri !important;
+    word-break: break-all;
+    /*column-count: 2;*/
+    /*columns: 2;*/
+    /*float: right;*/
 }
 .text-list{
     border-color: black;
