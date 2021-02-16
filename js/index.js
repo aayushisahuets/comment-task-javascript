@@ -28,8 +28,8 @@
             if(event.keyCode === 13)
               if (!event.shiftKey) {
                 event.preventDefault();
-                let commentTxt = document.getElementById("commentTxt").trim().value;
-                // commentTxt.trim();
+                let commentTxt = document.getElementById("commentTxt").value;
+                commentTxt = jQuery.trim(commentTxt);
                     if(commentTxt){
                         let comment = { 
                                       message: commentTxt, 
@@ -41,6 +41,7 @@
                         LocalsetItem();
                         renderComments();
                         paginate();
+                    document.getElementById("commentTxt").value = "";
                     }
              }
            });
@@ -124,6 +125,3 @@
           return display;
         }
 })();
-
-
-

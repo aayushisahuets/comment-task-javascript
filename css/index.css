@@ -2,16 +2,17 @@
     text-align: left;
     border-color: black;
     background-color: #e2dfd9;
-    width: 678px;
-    height: 75px;
-    margin-left: 230px;
+    margin-left: 52px;
     font-size: 15px;
     font-family: Calibri !important;
-    word-break: break-all;
-    /*column-count: 2;*/
-    /*columns: 2;*/
-    /*float: right;*/
+    /*word-break: break-all;*/
 }
+/*.input-left{
+    float: left;
+}
+.input-right{
+    float: right;
+}*/
 .text-list{
     border-color: black;
     background-color: #e2dfd9;
