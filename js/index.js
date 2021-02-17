@@ -5,8 +5,8 @@
     let currentPage = 1;
     let mod = 0;
 
-        async function renderComments(){
-          comments = await LocalgetItem();
+        function renderComments(){
+          comments = LocalgetItem();
            if(!comments)
            return;
            let html = document.getElementById("list");
@@ -23,7 +23,9 @@
            paginate();
         }
 
-        jQuery(document).ready(function() {
+        renderComments();   
+        {
+        // jQuery(document).ready(function() {
           jQuery(window).keydown(function(event){
             if(event.keyCode === 13)
               if (!event.shiftKey) {
@@ -43,13 +45,13 @@
                         paginate();
                     document.getElementById("commentTxt").value = "";
                     }
-             }
+               }
            });
-        });
+        };
 
-        jQuery(document).ready(async function(){//it works like onclick function()
-           renderComments();
-        })
+        // jQuery(document).ready(async function(){//it works like onclick function()
+           // renderComments();
+        // })
 
         jQuery(document).on('click','.page-item',function(e) {
             e.preventDefault();//eg:Clicking on a "Submit" button, prevent it from submitting a form
@@ -116,12 +118,36 @@
                 .appendTo("#nextPage");
         }
 
+         // $(document).ready(function () {
+
+    //     jQuery("#comment-form").submit(function (e) {
+
+    //         //stop submitting the form to see the disabled button effect
+    //         // e.preventDefault();
+
+    //         //disable the submit button
+    //         jQuery("#submit-button").attr("disabled", true);
+
+    //         //disable a normal button
+    //         jQuery("#submit-button").attr("disabled", true);
+
+    //         return true;
+
+    //     // });
+    // });
+
         function LocalsetItem(){
           localStorage.setItem('comments', JSON.stringify(comments));//JSON.stringify converts object into string
         }
 
-        async function LocalgetItem(){
-          let display = JSON.parse(await localStorage.getItem('comments'));//await keyword makes the fn wait for a promise.async & await depends on each other
+        function LocalgetItem(){
+          let display = JSON.parse(localStorage.getItem('comments'));//await keyword makes the fn wait for a promise.async & await depends on each other
           return display;
         }
+
+
+        // async function LocalgetItem(){
+        //   let display = JSON.parse(await localStorage.getItem('comments'));//await keyword makes the fn wait for a promise.async & await depends on each other
+        //   return display;
+        // }
 })();

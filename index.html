@@ -1,3 +1,4 @@
+<!-- Display the comment in the textfield -->
 <!Doctype html>
 <html>
     <head>
@@ -12,9 +13,11 @@
                 <ul class="pagination justify-content-center pt-4" id="pagination"></ul>
             </div>  
 
-            <form id="comment-form">
+            <form id="comment-form" method="post">
                 <div class="form-group comment-input">
-                    <textarea class="form-control text-list" id="commentTxt" rows="5" placeholder="Enter Comment here...(Use shift+Enter for new line)"></textarea>
+                    <textarea class="form-control text-list" id="commentTxt" rows="5" placeholder="Enter Comment here...(Use shift+Enter for new line)"></textarea><br>
+                    <input type="submit" id="submit-button">
+                    <input type="button" name="deleteButton" class="float-right" value="Delete">
                 </div>
             </form>
         </div>
