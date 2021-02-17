@@ -17,6 +17,7 @@
             if(i>= start && i < end)
                 jQuery('<li/>')
                     .attr('class', 'list-group-item input-list')
+                    .attr('id', 'hide_comments')
                     .text(`${obj.message} ${obj.datetime}`)//backtick operator(``)
                     .appendTo("#list");
             })
@@ -45,13 +46,35 @@
                         paginate();
                     document.getElementById("commentTxt").value = "";
                     }
-               }
+              }
            });
         };
-
-        // jQuery(document).ready(async function(){//it works like onclick function()
-           // renderComments();
-        // })
+           
+        jQuery(document).on('click','.submit-button',function(e){//it works like onclick function()
+          
+            event.preventDefault();
+            let commentTxt = document.getElementById("commentTxt").value;
+                commentTxt = jQuery.trim(commentTxt);
+                    if(commentTxt){
+                        let comment = { 
+                                      message: commentTxt, 
+                                      datetime: new Date().toLocaleString()
+                                      };
+                            if(!comments)
+                               comments = [];
+                        comments.unshift(comment);//unshift() add items to the beginning of the  array.
+                        LocalsetItem();
+                        renderComments();
+                        paginate();
+                    document.getElementById("commentTxt").value = "";
+                }
+        }); 
+        
+        jQuery(document).on('click','.deleteButton',function(e){//it works like onclick function()
+            localStorage.removeItem('comments');
+           // jQuery('#list').css("display", "none");
+            // location.reload();
+        })
 
         jQuery(document).on('click','.page-item',function(e) {
             e.preventDefault();//eg:Clicking on a "Submit" button, prevent it from submitting a form
@@ -117,25 +140,7 @@
                 .text("Next") 
                 .appendTo("#nextPage");
         }
-
-         // $(document).ready(function () {
-
-    //     jQuery("#comment-form").submit(function (e) {
-
-    //         //stop submitting the form to see the disabled button effect
-    //         // e.preventDefault();
-
-    //         //disable the submit button
-    //         jQuery("#submit-button").attr("disabled", true);
-
-    //         //disable a normal button
-    //         jQuery("#submit-button").attr("disabled", true);
-
-    //         return true;
-
-    //     // });
-    // });
-
+             
         function LocalsetItem(){
           localStorage.setItem('comments', JSON.stringify(comments));//JSON.stringify converts object into string
         }
@@ -144,8 +149,6 @@
           let display = JSON.parse(localStorage.getItem('comments'));//await keyword makes the fn wait for a promise.async & await depends on each other
           return display;
         }
-
-
         // async function LocalgetItem(){
         //   let display = JSON.parse(await localStorage.getItem('comments'));//await keyword makes the fn wait for a promise.async & await depends on each other
         //   return display;
