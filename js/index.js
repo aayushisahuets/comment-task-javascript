@@ -70,11 +70,16 @@
                 }
         }); 
         
-        jQuery(document).on('click','.deleteButton',function(e){//it works like onclick function()
-            localStorage.removeItem('comments');
+        // jQuery(document).on('click','.deleteButton',function(e){//it works like onclick function()
+        //     localStorage.remove('comments');
            // jQuery('#list').css("display", "none");
             // location.reload();
-        })
+        // $(document).ready(function(){
+          jQuery("#deleteButton").click(function(){
+            jQuery("ul").remove();
+  // });
+});
+        // })
 
         jQuery(document).on('click','.page-item',function(e) {
             e.preventDefault();//eg:Clicking on a "Submit" button, prevent it from submitting a form
