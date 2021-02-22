@@ -26,8 +26,7 @@
 
         renderComments();   
         {
-        // jQuery(document).ready(function() {
-          jQuery(window).keydown(function(event){
+         jQuery(window).keydown(function(event){
             if(event.keyCode === 13)
               if (!event.shiftKey) {
                 event.preventDefault();
@@ -47,11 +46,10 @@
                     document.getElementById("commentTxt").value = "";
                     }
               }
-           });
+          });
         };
            
         jQuery(document).on('click','.submit-button',function(e){//it works like onclick function()
-          
             event.preventDefault();
             let commentTxt = document.getElementById("commentTxt").value;
                 commentTxt = jQuery.trim(commentTxt);
@@ -67,23 +65,16 @@
                         renderComments();
                         paginate();
                     document.getElementById("commentTxt").value = "";
-                }
-        }); 
-        
-        // jQuery(document).on('click','.deleteButton',function(e){//it works like onclick function()
-        //     localStorage.remove('comments');
-           // jQuery('#list').css("display", "none");
-            // location.reload();
-        // $(document).ready(function(){
-          jQuery("#deleteButton").click(function(){
-            jQuery("ul").remove();
-  // });
-});
-        // })
+                    }
+        });
 
+        // functionality of delete button
+        jQuery("#deleteButton").click(function(){
+            jQuery("ul").remove();
+        });
+      
         jQuery(document).on('click','.page-item',function(e) {
             e.preventDefault();//eg:Clicking on a "Submit" button, prevent it from submitting a form
-              // debugger;
             switch(e.currentTarget.id){
                 case  "prevPage" :
                   if(currentPage > 1)
@@ -154,8 +145,4 @@
           let display = JSON.parse(localStorage.getItem('comments'));//await keyword makes the fn wait for a promise.async & await depends on each other
           return display;
         }
-        // async function LocalgetItem(){
-        //   let display = JSON.parse(await localStorage.getItem('comments'));//await keyword makes the fn wait for a promise.async & await depends on each other
-        //   return display;
-        // }
 })();
