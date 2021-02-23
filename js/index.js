@@ -15,10 +15,10 @@
            let start = end - 5;
            comments.map((obj, i) => {
             if(i>= start && i < end)
-                jQuery('<li/>')
-                    .attr('class', 'list-group-item input-list')
+                jQuery('<tr/>')
+                    .append(`<td>${obj.message}</td><td>${obj.datetime}</td>`)
+                    .attr('class', 'table table-bordered')
                     .attr('id', 'hide_comments')
-                    .text(`${obj.message} ${obj.datetime}`)//backtick operator(``)
                     .appendTo("#list");
             })
            paginate();
@@ -26,7 +26,8 @@
 
         renderComments();   
         {
-         jQuery(window).keydown(function(event){
+         jQuery(document).on('click','.submit-button',function(e){
+          jQuery(window).keydown(function(event){
             if(event.keyCode === 13)
               if (!event.shiftKey) {
                 event.preventDefault();
@@ -46,31 +47,33 @@
                     document.getElementById("commentTxt").value = "";
                     }
               }
+            });
           });
         };
            
-        jQuery(document).on('click','.submit-button',function(e){//it works like onclick function()
-            event.preventDefault();
-            let commentTxt = document.getElementById("commentTxt").value;
-                commentTxt = jQuery.trim(commentTxt);
-                    if(commentTxt){
-                        let comment = { 
-                                      message: commentTxt, 
-                                      datetime: new Date().toLocaleString()
-                                      };
-                            if(!comments)
-                               comments = [];
-                        comments.unshift(comment);//unshift() add items to the beginning of the  array.
-                        LocalsetItem();
-                        renderComments();
-                        paginate();
-                    document.getElementById("commentTxt").value = "";
-                    }
-        });
+        // jQuery(document).on('click','.submit-button',function(e){//it works like onclick function()
+        //     event.preventDefault();
+        //     let commentTxt = document.getElementById("commentTxt").value;
+        //         commentTxt = jQuery.trim(commentTxt);
+        //             if(commentTxt){
+        //                 let comment = { 
+        //                               message: commentTxt, 
+        //                               datetime: new Date().toLocaleString()
+        //                               };
+        //                     if(!comments)
+        //                        comments = [];
+        //                 comments.unshift(comment);//unshift() add items to the beginning of the  array.
+        //                 LocalsetItem();
+        //                 renderComments();
+        //                 paginate();
+        //             document.getElementById("commentTxt").value = "";
+        //             }
+        // });
 
         // functionality of delete button
         jQuery("#deleteButton").click(function(){
-            jQuery("ul").remove();
+            localStorage.removeItem('comments');
+            history.go(0);
         });
       
         jQuery(document).on('click','.page-item',function(e) {

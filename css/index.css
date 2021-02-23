@@ -1,11 +1,17 @@
 .input-list{
-    text-align: left;
     border-color: black;
     background-color: #e2dfd9;
-    margin-left: 52px;
     font-size: 15px;
     font-family: Calibri !important;
-    /*word-break: break-all;*/
+    word-break: break-all;
+}
+table tbody tr th{
+    text-align: center;
+    background-color: #e2dfd9;
+    width: 73%;
+}
+td{
+    width: 80%;
 }
 .text-list{
     border-color: black;

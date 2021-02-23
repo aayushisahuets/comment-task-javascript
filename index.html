@@ -9,15 +9,27 @@
     <body id="comment-task">
         <div class="container">
             <div class="mt-5">
-                <ul class="list-group" id="list"></ul>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Comments</th>
+                            <th>Datetime</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered" id="list">
+                    <tbody>
+                    </tbody>
+                </table>
+                <input type="button" id="deleteButton" name="deleteButton" class="float-right" value="Clear All">
+               <!--  <ul class="list-group" id="list"></ul> -->
                 <ul class="pagination justify-content-center pt-4" id="pagination"></ul>
             </div>  
 
             <form id="comment-form" method="post">
                 <div class="form-group comment-input">
                     <textarea class="form-control text-list" id="commentTxt" rows="5" placeholder="Enter Comment here...(Use shift+Enter for new line)" name="comment_text"></textarea><br>
-                    <input type="submit" id="submit-button" name="submit" class="submit-button">
-                    <input type="button" id="deleteButton" name="deleteButton" class="float-right" value="Delete">
+                    <input type="submit" id="submit-button" name="submit" class="submit-button float-right">
                 </div>
             </form>
         </div>
