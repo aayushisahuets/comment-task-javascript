@@ -20,18 +20,13 @@
                     .attr('class', 'table table-bordered')
                     .attr('id', 'hide_comments')
                     .appendTo("#list");
-            })
+            })  
            paginate();
         }
 
-        renderComments();   
-        {
-         jQuery(document).on('click','.submit-button',function(e){
-          jQuery(window).keydown(function(event){
-            if(event.keyCode === 13)
-              if (!event.shiftKey) {
-                event.preventDefault();
-                let commentTxt = document.getElementById("commentTxt").value;
+        // common function for submit button and enter key
+        function submitComment(){
+            let commentTxt = document.getElementById("commentTxt").value;
                 commentTxt = jQuery.trim(commentTxt);
                     if(commentTxt){
                         let comment = { 
@@ -46,29 +41,25 @@
                         paginate();
                     document.getElementById("commentTxt").value = "";
                     }
+        }
+
+        // functionality of enter key
+        renderComments();   
+        {
+         jQuery(window).keydown(function(event){
+            if(event.keyCode === 13)
+              if (!event.shiftKey) {
+                event.preventDefault();
+                submitComment();
               }
-            });
           });
         };
            
-        // jQuery(document).on('click','.submit-button',function(e){//it works like onclick function()
-        //     event.preventDefault();
-        //     let commentTxt = document.getElementById("commentTxt").value;
-        //         commentTxt = jQuery.trim(commentTxt);
-        //             if(commentTxt){
-        //                 let comment = { 
-        //                               message: commentTxt, 
-        //                               datetime: new Date().toLocaleString()
-        //                               };
-        //                     if(!comments)
-        //                        comments = [];
-        //                 comments.unshift(comment);//unshift() add items to the beginning of the  array.
-        //                 LocalsetItem();
-        //                 renderComments();
-        //                 paginate();
-        //             document.getElementById("commentTxt").value = "";
-        //             }
-        // });
+        // functionality of submit button
+        jQuery(document).on('click','.submit-button',function(e){//it works like onclick function()
+            event.preventDefault();
+            submitComment();
+        });
 
         // functionality of delete button
         jQuery("#deleteButton").click(function(){
